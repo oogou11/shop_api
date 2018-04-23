@@ -1,0 +1,12 @@
+shop=[{
+    'id':1,
+    'name':'芒果1',
+    'picture':'',
+    'sales_price':100,
+    'price':50,
+    'attrs':[{ 
+        'attr_name':'A',
+        'attr_list':[{'attr_value':'vip会员'}]
+    }],
+    'specifications':'5寸'
+}]
