@@ -12,7 +12,7 @@ def load_to_dict(d, text=None, filename=None):
     code_obj = compile(text, "<config string>", 'exec')
     exec(code_obj, d) 
 
-load_to_dict(globals(),'','service.py')
+load_to_dict(globals(),'','config.py')
 
 import mongoengine
 for alias, attrs in MONGO.items():  

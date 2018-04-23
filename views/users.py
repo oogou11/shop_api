@@ -1,9 +1,12 @@
 import json
 from flask import jsonify,request
 from flask.blueprints import Blueprint
+from services.user_s import UserService
 
 
 api_user = Blueprint('USER', __name__)
+
+service=UserService()
 
 @api_user.route('/getuserinfo',methods=['POST'])
 def get_user_info():
@@ -67,11 +70,23 @@ def update_address():
 
 @api_user.route('/jscode2session',methods=['POST'])
 def get_session():
-    param = json.loads(request.data.decode("utf-8"))
-    print(param)
-    res={
-	'code':0,
-	'msg':'成功',
-	'result':{'openid':'oeuj50KHMqsh5kYZYWQJuwmY5yG0','expires_in':'7200'}
-    }
+    param = json.loads(request.data.decode("utf-8")) 
+    code=param.get('jsCode',None)
+    userInfo=param.get('userInfo',None)
+    if code is None:
+        res={
+            'code':-1,
+            'msg':'非法请求',
+            'result':{}
+        }
+    else:
+        openid,expires_in=service.save_user(code,userInfo)
+        res={
+            'code':0,
+            'msg':'成功',
+            'result':{
+                'openid':openid,
+                'expires_in':expires_in
+            }
+        }
     return jsonify(res)

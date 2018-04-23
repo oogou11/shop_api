@@ -1,7 +1,6 @@
 from models.shop import Product 
 from common.singleton import Singleton
-from decimal import Decimal
-from .durian_data import data as test_data
+from decimal import Decimal 
 
 class ShopService(metaclass=Singleton):  
 
@@ -18,8 +17,7 @@ class ShopService(metaclass=Singleton):
                 'specifications':item.specifications,
                 'picture':item.picture 
             }
-            #result.append(single)
-        result.extend(test_data) 
+            result.append(single) 
         return result,data.count()
 
     def get_shop_detail(self,id):  
