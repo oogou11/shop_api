@@ -90,3 +90,16 @@ def get_session():
             }
         }
     return jsonify(res)
+#用户足迹
+@api_user.route('/userbrowse/add',methods=['POST'])
+def add_user_browse():
+    param = json.loads(request.data.decode("utf-8")) 
+    openId=param.get('openId',None)
+    product_id=param.get('product_id',None)
+    res={
+        'code':-1,
+        'msg':'接口正在开发中',
+        'result':{}
+    }
+    return jsonify(res)
+

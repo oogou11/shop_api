@@ -16,3 +16,5 @@ Tencet={
     'appid':'wx1174e760242f1384',
     'secret':'14c6e43fa8f48bfe7e820f9b9dc82c6c'
 } 
+
+HOST="https://api.leyouv.com/"
